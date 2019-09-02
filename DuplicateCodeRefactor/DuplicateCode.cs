@@ -15,28 +15,14 @@ namespace CleanCodeExercises.DuplicateCodeRefactor
             this.Hours = hours;
             this.Minutes = minutes;
         }
-    }
-    public class DuplicateCode
-    {
-        public void AdmitGuest(string name, string admissionDateTime)
-        {
-            // .....
-            // Business Logic             
-            var time = GetTime(admissionDateTime);
-            var hours = time.Hours;
-            var minutes = time.Minutes;
 
-            // .....
-            // More Business Logic 
-        }
-
-        private static Time GetTime(string admissionDateTime)
+        public static Time Parse(string str)
         {
             int time;
             int hours = 0, minutes = 0;
-            if (!string.IsNullOrEmpty(admissionDateTime))
+            if (!string.IsNullOrEmpty(str))
             {
-                if (int.TryParse(admissionDateTime.Replace(":", ""), out time))
+                if (int.TryParse(str.Replace(":", ""), out time))
                 {
                     hours = time / 100;
                     minutes = time % 100;
@@ -45,22 +31,38 @@ namespace CleanCodeExercises.DuplicateCodeRefactor
                 }
                 else
                 {
-                    throw new ArgumentNullException("AdmissionDateTime");
+                    throw new ArgumentNullException("str");
                 }
 
             }
-            else 
-                throw new ArgumentNullException("AdmissionDateTime");
+            else
+                throw new ArgumentNullException("str");
 
             return new Time(hours, minutes);
         }
+    }
+    public class DuplicateCode
+    {
+        public void AdmitGuest(string name, string str)
+        {
+            // .....
+            // Business Logic             
+            var time = Time.Parse(str);
+            var hours = time.Hours;
+            var minutes = time.Minutes;
 
-        public void UpdateAdmission(int admissionId, string name, string admissionDateTime)
+            // .....
+            // More Business Logic 
+        }
+
+        
+
+        public void UpdateAdmission(int admissionId, string name, string str)
         {
             // .....
             // Business Logic 
           
-            var time = GetTime(admissionDateTime);
+            var time = Time.Parse(str);
             var hours = time.Hours;
             var minutes = time.Minutes;
 
