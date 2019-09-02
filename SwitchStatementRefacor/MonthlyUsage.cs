@@ -10,9 +10,6 @@ namespace CleanCodeExercises.SwitchStatementRefacor
         {
             public int CallMinutes { get; set; }
             public int SmsCount { get; set; }
-
-            public Customer Customer;
-
-        
+            public Customer Customer;        
     }   
 }
