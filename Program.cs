@@ -13,10 +13,12 @@ namespace CleanCodeExercises
         {
             var usage = new MonthlyUsage { CallMinutes = 130, SmsCount = 213 };
             usage.Customer = new Customer { Type = CustomerType.PayAsYouGo };
+            var statement1 = usage.Generate();
+            statement1.PrintStatement();
 
-            var statement = new MonthlyStatement();
-            usage.Generate(statement);
-            statement.PrintStatement();
+            usage.Customer = new Customer { Type = CustomerType.Unlimited };
+            var statement2 = usage.Generate();        
+            statement2.PrintStatement();
         }
     }
 }

@@ -13,8 +13,9 @@ namespace CleanCodeExercises.SwitchStatementRefacor
 
             public Customer Customer;
 
-        public void Generate(MonthlyStatement statement)
+        public MonthlyStatement Generate()
         {
+            var statement = new MonthlyStatement();
             switch (Customer.Type)
             {
                 case CustomerType.PayAsYouGo:
@@ -30,6 +31,7 @@ namespace CleanCodeExercises.SwitchStatementRefacor
                 default:
                     throw new NotSupportedException("The Current Customer Type is not supported");
             }
+            return statement;
         }
     }   
 }
