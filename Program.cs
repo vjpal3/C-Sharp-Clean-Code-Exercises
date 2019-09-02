@@ -15,7 +15,7 @@ namespace CleanCodeExercises
             usage.Customer = new Customer { Type = CustomerType.PayAsYouGo };
 
             var statement = new MonthlyStatement();
-            statement.Generate(usage);
+            usage.Generate(statement);
             statement.PrintStatement();
         }
     }
