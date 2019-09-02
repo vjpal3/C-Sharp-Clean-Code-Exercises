@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DuplicateCodeRefactor\DuplicateCode.cs" />
+    <Compile Include="DuplicateCodeRefactor\Time.cs" />
     <Compile Include="SwitchStatementRefacor\PayAsYouGoCustomer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

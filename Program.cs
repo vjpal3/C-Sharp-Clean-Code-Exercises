@@ -15,7 +15,7 @@ namespace CleanCodeExercises
         {
             //Run DuplicateCodeRefactor Code
             new DuplicateCode().AdmitGuest("John Smith", "17:10");
-            new DuplicateCode().UpdateAdmission(10, "Jane Parera", "12:40");
+            new DuplicateCode().UpdateAdmission(10, "Jane Parera", "12:27");
 
             //Run SwitchStatementRefactor Code
             //var customer1 = new PayAsYouGoCustomer();
