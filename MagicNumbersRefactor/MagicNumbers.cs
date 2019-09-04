@@ -8,26 +8,26 @@ namespace CleanCodeExercises.MagicNumbersRefactor
 {
     class MagicNumbers
     {
-        public void ApproveDocument(int status)
+        public void ApproveDocument(DocumentStatus status)
         {
-            if(status == 1)
+            if(status == DocumentStatus.Draft)
             {
                 // ....
             }
-            else if (status == 2)
+            else if (status == DocumentStatus.Lodged)
             {
                 // ....
             }
         }
 
-        public void RejectDocument(string status)
+        public void RejectDocument(DocumentStatus status)
         {
             switch(status)
             {
-                case "1":
+                case DocumentStatus.Draft:
                     // ...
                     break;
-                case "2":
+                case DocumentStatus.Lodged:
                     // ...
                     break;
             }

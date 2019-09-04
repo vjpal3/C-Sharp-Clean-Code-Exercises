@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DuplicateCodeRefactor\DuplicateCode.cs" />
     <Compile Include="DuplicateCodeRefactor\Time.cs" />
+    <Compile Include="MagicNumbersRefactor\DocumentStatus.cs" />
     <Compile Include="MagicNumbersRefactor\MagicNumbers.cs" />
     <Compile Include="SwitchStatementRefacor\PayAsYouGoCustomer.cs" />
     <Compile Include="Program.cs" />
