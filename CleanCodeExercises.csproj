@@ -47,6 +47,7 @@
     <Compile Include="DuplicateCodeRefactor\Time.cs" />
     <Compile Include="MagicNumbersRefactor\DocumentStatus.cs" />
     <Compile Include="MagicNumbersRefactor\MagicNumbers.cs" />
+    <Compile Include="NestedConditionalsRefactor\Reservasion.cs" />
     <Compile Include="SwitchStatementRefacor\PayAsYouGoCustomer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
