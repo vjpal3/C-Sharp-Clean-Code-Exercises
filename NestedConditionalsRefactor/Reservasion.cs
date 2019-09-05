@@ -27,9 +27,10 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
         {                     
             try
             {               
-                if (IsGoldCustomer() && LessThan(24))
+                if (
+                    (IsGoldCustomer() && LessThan(24)) || (!IsGoldCustomer() && LessThan(48))
+                    )
                     throw new InvalidOperationException("It's too late to cancel. ");
-
             }
             catch (InvalidOperationException e)
             {
@@ -37,21 +38,8 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
                 IsCancelled = false;
                 return;
             }           
-           
-            try
-            {
-                if (!IsGoldCustomer() && LessThan(48))
-                    throw new InvalidOperationException("It's too late to cancel.");
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.Write(e.Message);
-                IsCancelled = false;
-                return;
-            }
-
+                     
             IsCancelled = true;   
-
         }
 
         private bool LessThan(int maxHrs)
