@@ -9,6 +9,11 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
     class Customer
     {
         public int LoyaltyPoints { get; set; }
+
+        public bool IsGoldCustomer()
+        {
+            return LoyaltyPoints > 100;
+        }
     }
 
     class Reservasion
@@ -26,10 +31,8 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
         public void Cancel()
         {                     
             try
-            {               
-                if (
-                    (IsGoldCustomer() && LessThan(24)) || (!IsGoldCustomer() && LessThan(48))
-                    )
+            {
+                if (IsCancellationPeriodOver())
                     throw new InvalidOperationException("It's too late to cancel. ");
             }
             catch (InvalidOperationException e)
@@ -37,19 +40,18 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
                 Console.Write(e.Message);
                 IsCancelled = false;
                 return;
-            }           
-                     
+            }                                
             IsCancelled = true;   
+        }
+
+        private bool IsCancellationPeriodOver()
+        {
+            return (Customer.IsGoldCustomer() && LessThan(24)) || (!Customer.IsGoldCustomer() && LessThan(48));
         }
 
         private bool LessThan(int maxHrs)
         {
             return (From - DateTime.Now).TotalHours < maxHrs;
-        }
-
-        private bool IsGoldCustomer()
-        {
-            return Customer.LoyaltyPoints > 100;
-        }
+        }        
     }
 }
