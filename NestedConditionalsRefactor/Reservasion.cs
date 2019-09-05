@@ -24,49 +24,44 @@ namespace CleanCodeExercises.NestedConditionalsRefactor
         }
 
         public void Cancel()
+        {                     
+            try
+            {               
+                if (IsGoldCustomer() && LessThan(24))
+                    throw new InvalidOperationException("It's too late to cancel. ");
+
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.Write(e.Message);
+                IsCancelled = false;
+                return;
+            }           
+           
+            try
+            {
+                if (!IsGoldCustomer() && LessThan(48))
+                    throw new InvalidOperationException("It's too late to cancel.");
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.Write(e.Message);
+                IsCancelled = false;
+                return;
+            }
+
+            IsCancelled = true;   
+
+        }
+
+        private bool LessThan(int maxHrs)
         {
-            // Gold Customer can cancel upto 24 hrs before
-            if(Customer.LoyaltyPoints > 100)
-            {
-                try
-                {
-                    if (DateTime.Now > From)
-                        throw new InvalidOperationException("It's too late to cancel. ");
+            return (From - DateTime.Now).TotalHours < maxHrs;
+        }
 
-                    if ((From - DateTime.Now).TotalHours < 24)
-                        throw new InvalidOperationException("It's too late to cancel. ");
-                    
-                }
-                catch(InvalidOperationException e)
-                {
-                    Console.Write(e.Message);
-                    IsCancelled = false;
-                    return;
-                }
-                IsCancelled = true;
-
-            }
-            else
-            {
-                // Regular Customer can cancel upto 48 hrs before
-                try
-                {
-                    if (DateTime.Now > From)
-                        throw new InvalidOperationException("It's too late to cancel.");
-
-                    if ((From - DateTime.Now).TotalHours < 48)
-                        throw new InvalidOperationException("It's too late to cancel.");
-                }
-                catch (InvalidOperationException e)
-                {
-                    Console.Write(e.Message);
-                    IsCancelled = false;
-                    return;
-                }
-
-                IsCancelled = true;
-            }
-
+        private bool IsGoldCustomer()
+        {
+            return Customer.LoyaltyPoints > 100;
         }
     }
 }
